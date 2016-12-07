@@ -14,33 +14,36 @@ class Agent(object):
     def build_dqn(self):
         """
             # TODO
+                You need to build your DQN here.
+                And load the pre-trained model named as './best_model.ckpt'.
+                For example, 
+                    saver.restore(self.sess, './best_model.ckpt')
         """
-        self.saver = tf.train.Saver(tf.trainable_variables())
-        self.saver.restore(sess, './best_model.ckpt')
 
-    # return 0 for RGB; return 1 for GrayScale
     def getSetting(self):
         """
             # TODO
-            You can only modify these three parameters.
-            Adding any other parameters are not allowed.
+                You can only modify these three parameters.
+                Adding any other parameters are not allowed.
+                1. action_repeat: number of time for repeating the same action 
+                2. random_init_step: number of randomly initial steps
+                3. screen_type: return 0 for RGB; return 1 for GrayScale
         """
         action_repeat = 4
         random_init_step = 30
         screen_tpye = 0
         return action_repeat, random_init_step, screen_tpye
 
-    """
-     The "action" is your DQN argmax ouput.
-     The "min_action_set" is used to transform DQN argmax ouput into real action number.
-     For example,
-         DQN output = [0.1, 0.2, 0.1, 0.6]
-         argmax = 3
-         min_action_set = [0, 1, 3, 4]
-         real action number = 4
-    """
     def play(self, screen):
         """
-        # TODO
+            # TODO
+                The "action" is your DQN argmax ouput.
+                The "min_action_set" is used to transform DQN argmax ouput into real action number.
+                For example,
+                     DQN output = [0.1, 0.2, 0.1, 0.6]
+                     argmax = 3
+                     min_action_set = [0, 1, 3, 4]
+                     real action number = 4
         """
+
         return min_action_set[action]
