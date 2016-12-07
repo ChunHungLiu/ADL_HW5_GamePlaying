@@ -32,7 +32,7 @@ class Agent(object):
          min_action_set = [0, 1, 3, 4]
          real action number = 4
     """
-    def play(self, screen)
+    def play(self, screen):
         """
         # TODO
         """
