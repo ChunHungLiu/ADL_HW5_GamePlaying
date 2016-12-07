@@ -9,7 +9,14 @@ class Agent(object):
     def __init__(self, env, sess):
         self.sess = sess
         min_action_set = env.getMinimalActionSet()
-        
+        self.build_dqn()
+
+    def build_dqn(self):
+        """
+            # TODO
+        """
+        self.saver = tf.train.Saver(tf.trainable_variables())
+        self.saver.restore(sess, './best_model.ckpt')
 
     # return 0 for RGB; return 1 for GrayScale
     def getSetting(self):
