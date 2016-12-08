@@ -31,8 +31,8 @@ class Agent(object):
         """
         action_repeat = 4
         random_init_step = 30
-        screen_tpye = 0
-        return action_repeat, random_init_step, screen_tpye
+        screen_type = 0
+        return action_repeat, random_init_step, screen_type
 
     def play(self, screen):
         """
