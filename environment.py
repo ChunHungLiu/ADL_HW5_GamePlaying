@@ -4,29 +4,37 @@
 You DO NOT need to upload this file.
 
 """
-import random
+import random, sys
 from ale_python_interface import ALEInterface
 
 class ALE(object):
-    def __init__(self, init_seed, action_repeat, random_init_step, screen_tpye):
+    def __init__(self, init_seed):
         self.ale = ALEInterface()
         self.ale.setInt(b'random_seed', init_seed)
         self.ale.loadROM('./breakout.bin')
         self.action_size = 4
-        self.action_repeat = action_repeat
-        self.random_init_step = random_init_step
 
         self.screen = None
         self.reward = 0
         self.terminal = True
 
+    def setSetting(self, action_repeat, random_init_step, screen_type):
+        self.action_repeat = action_repeat
+        self.random_init_step = random_init_step
+        self.screen_type = screen_type
+
     def _step(self, action):
         self.reward = self.ale.act(action)
-        if screen_tpye == 0:
-            self.screen = self.ale.getScreenRGB()
-        else:
-            self.screen = self.ale.getScreenGrayScale()
         self.terminal = self.ale.game_over()
+
+        if self.screen_type == 0:
+            self.screen = self.ale.getScreenRGB()
+        elif selfscreen_type == 1:
+            self.screen = self.ale.getScreenGrayScale()
+        else:
+            sys.stderr.write('screen_type error!')
+            exit()
+
 
     def state(self):
         return self.reward, self.screen, self.terminal
@@ -44,10 +52,14 @@ class ALE(object):
     def new_game(self):
         if self.ale.game_over():
             self.ale.reset_game()
-            if screen_tpye == 0:
+
+            if self.screen_type == 0:
                 self.screen = self.ale.getScreenRGB()
-            else:
+            elif self.screen_type == 1:
                 self.screen = self.ale.getScreenGrayScale()
+            else:
+                sys.stderr.write('screen_type error!')
+                exit()
 
         self._step(0)
 

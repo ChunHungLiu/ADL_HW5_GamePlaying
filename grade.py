@@ -17,15 +17,20 @@ seed = int(sys.argv[1])
 
 with tf.Session() as sess:
 
-    # Init agent
-    agent = Agent(sess)
-    action_repeat, random_init_step, screen_tpye = agent.getSetting()
-
     # Init env
-    env = ALE(seed, action_repeat, random_init_step, screen_tpye)
+    env = ALE(seed)
 
+    # Init agent
+    agent = Agent(sess, env.ale.getMinimalActionSet())
+    action_repeat, random_init_step, screen_type = agent.getSetting()
+
+    # Set env setting
+    env.setSetting(action_repeat, random_init_step, screen_type)
+
+    # Get a new game
     screen = env.new_game()
     
+    # Start playing
     current_reward = 0
     for _ in range(5000):
         action = agent.play(screen)
@@ -33,4 +38,5 @@ with tf.Session() as sess:
         current_reward += reward
         if terminal:
             break
-    print(seed, current_reward)
+
+    print("%d,%d" % (seed, current_reward))
