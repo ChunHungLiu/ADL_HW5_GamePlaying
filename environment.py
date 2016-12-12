@@ -29,8 +29,8 @@ class ALE(object):
 
         if self.screen_type == 0:
             self.screen = self.ale.getScreenRGB()
-        elif selfscreen_type == 1:
-            self.screen = self.ale.getScreenGrayScale()
+        elif self.screen_type == 1:
+            self.screen = self.ale.getScreenGrayscale()
         else:
             sys.stderr.write('screen_type error!')
             exit()
@@ -56,7 +56,7 @@ class ALE(object):
             if self.screen_type == 0:
                 self.screen = self.ale.getScreenRGB()
             elif self.screen_type == 1:
-                self.screen = self.ale.getScreenGrayScale()
+                self.screen = self.ale.getScreenGrayscale()
             else:
                 sys.stderr.write('screen_type error!')
                 exit()
