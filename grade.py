@@ -40,4 +40,4 @@ with tf.Session() as sess:
         if terminal:
             break
 
-    print("%d,%d" % (init_seed, init_rand, current_reward))
+    print("%d,,%d,%d" % (init_seed, init_rand, current_reward))
