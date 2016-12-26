@@ -14,7 +14,7 @@ tf.set_random_seed(123)
 random.seed(123)
 
 init_seed = int(sys.argv[1])
-rand_init = int(sys.argv[2])
+init_rand = int(sys.argv[2])
 
 with tf.Session() as sess:
 
