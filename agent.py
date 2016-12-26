@@ -30,9 +30,8 @@ class Agent(object):
             3. screen_type: return 0 for RGB; return 1 for GrayScale
         """
         action_repeat = 4
-        random_init_step = 30
         screen_type = 0
-        return action_repeat, random_init_step, screen_type
+        return action_repeat, screen_type
 
     def play(self, screen):
         """
