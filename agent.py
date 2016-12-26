@@ -26,8 +26,7 @@ class Agent(object):
             You can only modify these three parameters.
             Adding any other parameters are not allowed.
             1. action_repeat: number of time for repeating the same action 
-            2. random_init_step: number of randomly initial steps
-            3. screen_type: return 0 for RGB; return 1 for GrayScale
+            2. screen_type: return 0 for RGB; return 1 for GrayScale
         """
         action_repeat = 4
         screen_type = 0
